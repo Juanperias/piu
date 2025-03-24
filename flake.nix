@@ -33,7 +33,7 @@
     in {
       formatter = pkgs.alejandra;
       devShells.default = craneLib.devShell {
-        packages = [toolchain];
+        packages = with pkgs; [toolchain bun];
       };
     });
 }
