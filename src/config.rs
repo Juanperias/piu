@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 use thiserror::Error;
 use tokio::fs::read_to_string;
-use std::collections::HashMap;
 
 #[derive(Error, Debug)]
 pub enum ConfigError {
@@ -12,19 +12,19 @@ pub enum ConfigError {
     IoError(#[from] std::io::Error),
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct ServerConfig {
     pub host_config: HostConfig,
     pub bind: HashMap<String, BindConfig>,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct HostConfig {
     pub port: u16,
     pub host: String,
 }
 
-#[derive(Debug, Serialize, Deserialize, Hash, Eq, PartialEq)]
+#[derive(Debug, Serialize, Deserialize, Hash, Eq, PartialEq, Clone)]
 pub struct BindConfig {
     pub proxy_pass: String,
 }
