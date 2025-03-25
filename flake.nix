@@ -1,5 +1,5 @@
 {
-  description = "Tinity flake";
+  description = "Piu flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
